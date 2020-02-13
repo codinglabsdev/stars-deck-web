@@ -5,6 +5,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/scss/main.scss';
 import 'typeface-montserrat';
 import 'typeface-fjalla-one';
+import 'typeface-lato';
 
 import '~/config/ReactotronConfig';
 import store from '~/store';
