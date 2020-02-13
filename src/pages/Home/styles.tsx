@@ -1,55 +1,27 @@
 import styled from 'styled-components';
-import { darken } from 'polished';
 
 export const Container = styled.div`
   height: 100%;
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   color: #fff;
+`;
 
-  div {
-    max-width: 800px;
-    width: 100%;
-    flex: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    h1 {
-      color: #ff79c6;
-      padding: 10px 0;
-    }
-
-    h2 {
-      padding: 10px 0;
-    }
-
-    p {
-      line-height: 1.5rem;
-      padding: 5px 0;
-      text-align: center;
-    }
-
-    button {
-      margin: 20px 0;
-      height: 44px;
-      padding: 0 25px;
-      color: #fff;
-      background: #3b9eff;
-      font-weight: bold;
-      border: 0;
-      border-radius: 4px;
-      transition: background 0.2s;
-
-      &:hover {
-        background: ${darken(0.03, '#3b9eff')};
-      }
-    }
-  }
+export const Header = styled.div`
+  height: 450px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(
+    107.93deg,
+    #7f7fd5 0.17%,
+    #86a8e7 52.17%,
+    #91eae4 100%
+  );
 `;
 
 export const Footer = styled.footer`

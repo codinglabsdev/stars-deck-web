@@ -1,0 +1,44 @@
+{
+  "ranking": [
+    {
+      "id": 1,
+      "position": 1,
+      "username": "alvarofenrandoms",
+      "name": "Álvaro Fernando",
+      "avatar": "https://avatars0.githubusercontent.com/u/3226069?s=96&v=4",
+      "points": 128
+    },
+    {
+      "id": 2,
+      "position": 2,
+      "username": "arthurnobrega",
+      "name": "Arthur Nobrega",
+      "avatar": "https://avatars1.githubusercontent.com/u/1025651?s=96&v=4",
+      "points": 100
+    },
+    {
+      "id": 3,
+      "position": 3,
+      "username": "flavioalves",
+      "name": "Flavio Alves",
+      "avatar": "https://avatars2.githubusercontent.com/u/155726?s=96&v=4",
+      "points": 98
+    },
+    {
+      "id": 4,
+      "position": 4,
+      "username": "raphaelcunha",
+      "name": "Raphael Cunha",
+      "avatar": "https://avatars3.githubusercontent.com/u/3853552?s=96&v=4",
+      "points": 95
+    },
+    {
+      "id": 5,
+      "position": 5,
+      "username": "vital-edu",
+      "name": "Eduardo Vital",
+      "avatar": "https://avatars2.githubusercontent.com/u/5282301?s=96&v=4",
+      "points": 90
+    }
+  ]
+}

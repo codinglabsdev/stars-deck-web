@@ -8,6 +8,7 @@ export default createGlobalStyle`
   padding: 0;
   outline: 0;
   box-sizing: border-box;
+  border: 0;
 }
 
 *:focus {
@@ -19,7 +20,7 @@ html, body, #root {
 }
 
 body {
-  -webkit-font-smoothing: antialiased
+  -webkit-font-smoothing: antialiased;
 }
 
 body, input, button {
@@ -41,20 +42,20 @@ button {
 
 h1 {
   font-family: 'Fjalla One', sans-serif;
-  font-size: 3.5rem;
-  letter-spacing: 0.1rem;
+  font-size: 4rem;
+  letter-spacing: 0.65rem;
+  line-height: 5rem;
   text-align: center;
   text-transform: uppercase;
   color: #FFFFFF;
 }
 
 h2 {
-  font-family: Montserrat, sans-serif;
-  font-size: 1.5rem;
-  font-weight: 400;
-  color: #FFFFFF;
-  letter-spacing: 0.0625rem;
+  font-family: 'Fjalla One', sans-serif;
+  font-size: 1.75rem;
   text-align: center;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
 }
 
 h3 {
