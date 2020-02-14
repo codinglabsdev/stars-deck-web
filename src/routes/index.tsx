@@ -13,7 +13,7 @@ export default function Routes() {
         component={UserDetails}
         isPrivate={false}
       />
-      <Route path="/user/:user/new" component={NewEvent} isPrivate={false} />
+      <Route path="/user/:user/new" component={NewEvent} isPrivate />
       <Route path="/register" component={Register} isPrivate={false} />
       <Route path="/login" component={Login} isPrivate={false} />
       <Route path="/" exact component={Home} isPrivate={false} />

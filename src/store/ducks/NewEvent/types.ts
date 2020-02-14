@@ -13,7 +13,6 @@ export enum NewEventType {
  */
 
 export interface NewEvent {
-  user: string;
   type: 'participation' | 'dojo' | 'presentation' | 'pr';
   title: string;
   date: Date;

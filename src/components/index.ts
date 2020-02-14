@@ -16,3 +16,4 @@ export { default as GoBackButton } from './GoBackButton';
 export { default as NewButton } from './NewButton';
 export { default as Input } from './Input';
 export { default as Grid } from './Grid';
+export { default as UserCard } from './UserCard';

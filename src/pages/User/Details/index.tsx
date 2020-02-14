@@ -25,9 +25,15 @@ interface Props extends RouteComponentProps<MatchProps> {}
 
 const UserDetails: React.FC<Props> = ({ match }) => {
   const dispatch = useDispatch();
-  const userDetails = useSelector(
-    (state: ApplicationState) => state.userDetails
-  );
+  const [
+    userDetails,
+    signedIn,
+    username,
+  ] = useSelector((state: ApplicationState) => [
+    state.userDetails,
+    state.userSignIn.signedIn,
+    state.userSignIn.username,
+  ]);
 
   useEffect(() => {
     dispatch(UserDetailsActions.loadRequest(match.params.id));
@@ -39,7 +45,11 @@ const UserDetails: React.FC<Props> = ({ match }) => {
       <Paper>
         <div className="buttons">
           <GoBackButton path="/" />
-          <NewButton path={`/user/${match.params.id}/new`}>Add Event</NewButton>
+          {signedIn && match.params.id === username && (
+            <NewButton path={`/user/${match.params.id}/new`}>
+              Add Event
+            </NewButton>
+          )}
         </div>
         <AlignCenter>
           <UserInfo user={userDetails.data} loading={userDetails.loading} />

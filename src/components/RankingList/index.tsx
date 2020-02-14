@@ -37,7 +37,7 @@ const RankingList: React.FC<Props> = ({ history }) => {
 
   const list = ranking.data.slice(3);
 
-  const goToUserDetails = (id: Number) => {
+  const goToUserDetails = (id: string) => {
     history.push(`user/${id}/details`);
   };
 
@@ -46,7 +46,7 @@ const RankingList: React.FC<Props> = ({ history }) => {
       position={position}
       key={user.id}
       podium
-      onClick={() => goToUserDetails(user.id)}
+      onClick={() => goToUserDetails(user.username)}
     >
       <ProfilePicture src={user.avatar} size={imageSize(user.position)} />
       <h2 className="name">{user.name}</h2>
@@ -76,7 +76,7 @@ const RankingList: React.FC<Props> = ({ history }) => {
               <Card
                 position={i + 4}
                 key={user.id}
-                onClick={() => goToUserDetails(user.id)}
+                onClick={() => goToUserDetails(user.username)}
               >
                 <h2 className="position">{user.position}</h2>
                 <ProfilePicture

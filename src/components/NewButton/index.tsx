@@ -6,12 +6,13 @@ import { Container } from './styles';
 
 interface Props {
   path: string;
+  background?: boolean;
 }
 
-const NewButton: React.FC<Props> = ({ path, children }) => {
+const NewButton: React.FC<Props> = ({ path, children, background }) => {
   const goBack = (pathname: string) => history.push(pathname);
   return (
-    <Container onClick={() => goBack(path)}>
+    <Container onClick={() => goBack(path)} background={background}>
       {children}
       <IoIosAdd size={28} />
     </Container>

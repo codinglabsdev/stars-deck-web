@@ -54,7 +54,7 @@ const NewEvent: React.FC<Props> = ({ match, history }) => {
 
   const submit = (data: UserEvent) => {
     setSubmitted(true);
-    dispatch(NewEventActions.sendRequest({ ...data, user: match.params.user }));
+    dispatch(NewEventActions.sendRequest(data));
   };
 
   const options = [

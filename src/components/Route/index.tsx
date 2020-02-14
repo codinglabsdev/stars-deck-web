@@ -1,9 +1,10 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-// import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import DefaultLayout from '~/layouts/default';
+import ApplicationState from '~/store/ducks/ApplicationState';
 
 interface Props {
   component: React.FC<any>;
@@ -18,12 +19,14 @@ const RouteWrapper: React.FC<Props> = ({
   exact,
   path,
 }) => {
-  // const signed = useSelector(state => state.auth.auth);
+  const signedIn = useSelector(
+    (state: ApplicationState) => state.userSignIn.signedIn
+  );
 
-  const signed = true;
+  const signed = signedIn;
 
   if (!signed && isPrivate) {
-    return <Redirect to="/" />;
+    return <Redirect to="/login" />;
   }
 
   return (
