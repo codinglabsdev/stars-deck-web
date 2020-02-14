@@ -12,6 +12,7 @@ import Pagination from '../Pagination';
 import Loader from '../Loader';
 
 import ApplicationState from '~/store/ducks/ApplicationState';
+import { RankingData } from '~/store/ducks/Ranking/types';
 
 interface Props {
   history: History;
@@ -32,17 +33,26 @@ const RankingList: React.FC<Props> = ({ history }) => {
     return 75;
   };
 
-  const podium = ranking.data
-    .slice(0, 3)
-    .sort(({ position: a }, { position: b }) => {
-      if (a === 2 && b === 1) return -1;
-      return 0;
-    });
+  const podium = ranking.data.slice(0, 3);
+
   const list = ranking.data.slice(3);
 
   const goToUserDetails = (id: Number) => {
     history.push(`user/${id}/details`);
   };
+
+  const renderPodiumPosition = (user: RankingData, position: number) => (
+    <Card
+      position={position}
+      key={user.id}
+      podium
+      onClick={() => goToUserDetails(user.id)}
+    >
+      <ProfilePicture src={user.avatar} size={imageSize(user.position)} />
+      <h2 className="name">{user.name}</h2>
+      <h2 className="points">{user.points} pts</h2>
+    </Card>
+  );
 
   return (
     <Container>
@@ -50,28 +60,21 @@ const RankingList: React.FC<Props> = ({ history }) => {
         <Loader />
       ) : (
         <>
-          <Podium>
-            {podium.map(user => (
-              <Card
-                position={user.position}
-                key={user.id}
-                podium
-                onClick={() => goToUserDetails(user.id)}
-              >
-                <ProfilePicture
-                  src={user.avatar}
-                  size={imageSize(user.position)}
-                />
-                <h2 className="name">{user.name}</h2>
-                <h2 className="points">{user.points} pts</h2>
-              </Card>
-            ))}
-          </Podium>
-          <Divider />
+          {podium.length && (
+            <>
+              <Podium>
+                {renderPodiumPosition(podium[1], 2)}
+                {renderPodiumPosition(podium[0], 1)}
+                {renderPodiumPosition(podium[2], 3)}
+              </Podium>
+
+              <Divider />
+            </>
+          )}
           <List>
-            {list.map(user => (
+            {list.map((user, i) => (
               <Card
-                position={user.position}
+                position={i + 4}
                 key={user.id}
                 onClick={() => goToUserDetails(user.id)}
               >

@@ -35,6 +35,11 @@ export const Container = styled.div<ContainerProps>`
          transition: all 1s ease;
          cursor: pointer;
 
+         ${props => props.podium && css`
+          max-width: 300px;
+          margin: 0 10px;
+         `}
+
          img {
            z-index: 1;
          }
@@ -99,7 +104,7 @@ export const Container = styled.div<ContainerProps>`
          ${props =>
            props.position === 1 &&
            css`
-             transform: scale(1.025);
+             z-index: 1;
            `}
 
          ${props =>

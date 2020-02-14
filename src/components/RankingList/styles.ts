@@ -13,10 +13,13 @@ export const Container = styled.div`
 export const Podium = styled.div`
   padding-top: 50px;
   width: 100%;
-  display: grid;
+  /* display: grid;
   grid-template-rows: 1fr;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 25px;
+  grid-gap: 25px; */
+  /* align-items: flex-end; */
+  display: flex;
+  justify-content: center;
   align-items: flex-end;
   max-height: 450px;
 `;

@@ -1,12 +1,12 @@
-import { call, put } from "redux-saga/effects";
+import { call, put } from 'redux-saga/effects';
 
-import api from "~/services/api";
+import api from '~/services/api';
 
-import { loadSuccess, loadFailure } from "./actions";
+import { loadSuccess, loadFailure } from './actions';
 
 export function* load() {
   try {
-    const response = yield call(api.get, "ranking");
+    const response = yield call(api.get, 'ranking');
     yield put(loadSuccess(response.data));
   } catch (error) {
     yield put(loadFailure());

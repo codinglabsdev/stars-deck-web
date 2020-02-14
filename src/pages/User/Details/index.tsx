@@ -31,7 +31,7 @@ const UserDetails: React.FC<Props> = ({ match }) => {
 
   useEffect(() => {
     dispatch(UserDetailsActions.loadRequest(match.params.id));
-  }, []);
+  }, [dispatch, match.params.id]);
 
   return (
     <Container>
