@@ -4,6 +4,7 @@ import { darken } from 'polished';
 interface Props {
   variant?: 'text' | 'outlined';
   type?: 'button' | 'submit' | null;
+  secondary?: boolean;
 }
 
 export const Container = styled.button.attrs<Props>(props => ({
@@ -15,7 +16,7 @@ export const Container = styled.button.attrs<Props>(props => ({
   font-family: Montserrat, 'sans-serif';
   font-style: normal;
   font-weight: 500;
-  font-size: 1rem;
+  font-size: ${props => props.secondary ? '0.85rem' : '1rem'};
   text-align: center;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -48,5 +49,9 @@ export const Container = styled.button.attrs<Props>(props => ({
         background: none;
         color: ${darken(0.3, '#74b9ff')};
       }
+    `}
+
+    ${props => props.secondary && css`
+      margin-top: 25px;
     `}
 `;

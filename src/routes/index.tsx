@@ -14,7 +14,7 @@ export default function Routes() {
         component={UserDetails}
         isPrivate={false}
       />
-      <Route path="/user/:id/new" component={NewEvent} isPrivate={false} />
+      <Route path="/user/:user/new" component={NewEvent} isPrivate={false} />
     </Switch>
   );
 }

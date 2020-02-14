@@ -8,4 +8,9 @@ export const Container = styled.div`
   justify-content: flex-start;
   align-items: center;
   color: #fff;
+
+  span.label {
+    padding: 25px 0;
+    color: #000;
+  }
 `;

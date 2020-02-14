@@ -165,5 +165,100 @@
       "points": 90,
       "events": []
     }
+  ],
+  "events": [
+    {
+      "id": 1
+    },
+    {
+      "type": "presentation",
+      "title": "oisajdos",
+      "date": "aspodkosakd",
+      "location": "pkaspdkp",
+      "url": "",
+      "description": "",
+      "user": 1,
+      "id": 2
+    },
+    {
+      "type": "presentation",
+      "title": "aoisjiojsado",
+      "date": "aosjdiojasidioa",
+      "location": "jsaoijdioasd",
+      "url": "",
+      "description": "",
+      "user": "3",
+      "id": 3
+    },
+    {
+      "type": "presentation",
+      "title": "oaisoidj",
+      "date": "asjdioajsdio",
+      "location": "oijasdiojad",
+      "url": "",
+      "description": "",
+      "user": "3",
+      "id": 4
+    },
+    {
+      "type": "presentation",
+      "title": "aiosjdios",
+      "date": "alsdiasj",
+      "location": "oijasiodoij",
+      "url": "",
+      "description": "",
+      "user": "3",
+      "id": 5
+    },
+    {
+      "type": "pr",
+      "title": "auishdiuash",
+      "date": "aoisjdio",
+      "location": "oijsioajdoi",
+      "url": "",
+      "description": "",
+      "user": "3",
+      "id": 6
+    },
+    {
+      "type": "dojo",
+      "title": "asdas",
+      "date": "aoisjdio",
+      "location": "ojsaoid",
+      "url": "",
+      "description": "",
+      "user": "3",
+      "id": 7
+    },
+    {
+      "type": "dojo",
+      "title": "ahsuidha",
+      "date": "asdad",
+      "location": "asdasd",
+      "url": "",
+      "description": "",
+      "user": "1",
+      "id": 8
+    },
+    {
+      "type": "presentation",
+      "title": "asdadasd",
+      "date": "adasdsa",
+      "location": "sadasd",
+      "url": "",
+      "description": "",
+      "user": "1",
+      "id": 9
+    },
+    {
+      "type": "presentation",
+      "title": "aisjdio",
+      "date": "asdasda",
+      "location": "sadas",
+      "url": "",
+      "description": "",
+      "user": "1",
+      "id": 10
+    }
   ]
 }

@@ -10,6 +10,7 @@ export const Container = styled.div`
   padding: 55px 100px;
   margin-top: -75px;
   margin-bottom: 75px;
+  position: relative;
 
   .buttons {
     display: flex;
