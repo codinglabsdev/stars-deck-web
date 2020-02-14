@@ -78,11 +78,8 @@ const RankingList: React.FC<Props> = ({ history }) => {
                 key={user.id}
                 onClick={() => goToUserDetails(user.username)}
               >
-                <h2 className="position">{user.position}</h2>
-                <ProfilePicture
-                  src={user.avatar}
-                  size={imageSize(user.position)}
-                />
+                <h2 className="position">{i + 4}</h2>
+                <ProfilePicture src={user.avatar} size={imageSize(i + 4)} />
                 <div
                   style={{
                     flex: 'auto',

@@ -14,7 +14,7 @@ const UserCard = () => {
   ]);
   useEffect(() => {
     dispatch(UserDetailsActions.loadRequest(username!));
-  }, [dispatch]);
+  }, [dispatch, username]);
 
   return (
     <Container>
