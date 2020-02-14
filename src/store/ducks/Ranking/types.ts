@@ -3,9 +3,9 @@
  */
 
 export enum RankingTypes {
-  LOAD_REQUEST = "@ranking/LOAD_REQUEST",
-  LOAD_SUCCESS = "@ranking/LOAD_SUCCESS",
-  LOAD_FAILURE = "@ranking/LOAD_FAILURE"
+  LOAD_REQUEST = '@ranking/LOAD_REQUEST',
+  LOAD_SUCCESS = '@ranking/LOAD_SUCCESS',
+  LOAD_FAILURE = '@ranking/LOAD_FAILURE',
 }
 
 /**

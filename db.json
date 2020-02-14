@@ -40,5 +40,130 @@
       "avatar": "https://avatars2.githubusercontent.com/u/5282301?s=96&v=4",
       "points": 90
     }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "position": 1,
+      "username": "alvarofenrandoms",
+      "name": "Álvaro Fernando",
+      "avatar": "https://avatars0.githubusercontent.com/u/3226069?s=96&v=4",
+      "points": 128,
+      "bio": "As @Novatics developer, I've been developing web systems using different programming languages such as Python, Javascript, Ruby and Java.",
+      "url": "https://github.com/arthurnobrega",
+      "events": [
+        {
+          "id": 1,
+          "type": "participation",
+          "title": "Meeting",
+          "date": 1581627413627,
+          "description": "Attended as a listener",
+          "location": "Novatics",
+          "url": "https://github.com",
+          "points": 1
+        },
+        {
+          "id": 1,
+          "type": "dojo",
+          "title": "Meeting",
+          "date": 1581627413627,
+          "description": "Attended as a listener",
+          "location": "Novatics",
+          "url": null,
+          "points": 2
+        },
+        {
+          "id": 1,
+          "type": "presentation",
+          "title": "Meeting",
+          "date": 1581627413627,
+          "description": "Attended as a listener",
+          "location": "Novatics",
+          "url": null,
+          "points": 3
+        },
+        {
+          "id": 1,
+          "type": "pr",
+          "title": "Meeting",
+          "date": 1581627413627,
+          "description": "Attended as a listener",
+          "location": "Novatics",
+          "url": null,
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "position": 2,
+      "username": "arthurnobrega",
+      "name": "Arthur Nobrega",
+      "avatar": "https://avatars1.githubusercontent.com/u/1025651?s=96&v=4",
+      "points": 100,
+      "bio": "As @Novatics developer, I've been developing web systems using different programming languages such as Python, Javascript, Ruby and Java.",
+      "url": "https://github.com/arthurnobrega",
+      "events": [
+        {
+          "id": 1,
+          "type": "participation",
+          "title": "Meeting",
+          "date": 1581627413627,
+          "description": "Attended as a listener",
+          "location": "Novatics",
+          "url": null,
+          "points": 1
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "position": 3,
+      "username": "flavioalves",
+      "name": "Flavio Alves",
+      "avatar": "https://avatars2.githubusercontent.com/u/155726?s=96&v=4",
+      "points": 98,
+      "events": [
+        {
+          "id": 1,
+          "type": "participation",
+          "title": "Meeting",
+          "date": 1581627413627,
+          "description": "Attended as a listener",
+          "location": "Novatics",
+          "url": null,
+          "points": 1
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "position": 4,
+      "username": "raphaelcunha",
+      "name": "Raphael Cunha",
+      "avatar": "https://avatars3.githubusercontent.com/u/3853552?s=96&v=4",
+      "points": 95,
+      "events": [
+        {
+          "id": 1,
+          "type": "participation",
+          "title": "Meeting",
+          "date": 1581627413627,
+          "description": "Attended as a listener",
+          "location": "Novatics",
+          "url": null,
+          "points": 1
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "position": 5,
+      "username": "vital-edu",
+      "name": "Eduardo Vital",
+      "avatar": "https://avatars2.githubusercontent.com/u/5282301?s=96&v=4",
+      "points": 90,
+      "events": []
+    }
   ]
 }

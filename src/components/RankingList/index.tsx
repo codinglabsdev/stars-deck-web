@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
+import { History } from 'history';
 import * as RankingActions from '~/store/ducks/Ranking/actions';
 
 import { Container, Podium, Divider, List } from './styles';
@@ -8,10 +9,15 @@ import { Container, Podium, Divider, List } from './styles';
 import Card from '../Card';
 import ProfilePicture from '../ProfilePicture';
 import Pagination from '../Pagination';
+import Loader from '../Loader';
 
 import ApplicationState from '~/store/ducks/ApplicationState';
 
-const RankingList = () => {
+interface Props {
+  history: History;
+}
+
+const RankingList: React.FC<Props> = ({ history }) => {
   const dispatch = useDispatch();
   const ranking = useSelector((state: ApplicationState) => state.ranking);
 
@@ -34,37 +40,62 @@ const RankingList = () => {
     });
   const list = ranking.data.slice(3);
 
+  const goToUserDetails = (id: Number) => {
+    history.push(`user/${id}/details`);
+  };
+
   return (
     <Container>
-      <Podium>
-        {podium.map(user => (
-          <Card position={user.position} key={user.id} podium>
-            <ProfilePicture src={user.avatar} size={imageSize(user.position)} />
-            <h2 className="name">{user.name}</h2>
-            <h2 className="points">{user.points} pts</h2>
-          </Card>
-        ))}
-      </Podium>
-      <Divider />
-      <List>
-        {list.map(user => (
-          <Card position={user.position} key={user.id}>
-            <h2 className="position">{user.position}</h2>
-            <ProfilePicture src={user.avatar} size={imageSize(user.position)} />
-            <div
-              style={{
-                flex: 'auto',
-                textAlign: 'left',
-                zIndex: 1
-              }}
-            >
-              <h2 className="name">{user.name}</h2>
-            </div>
-            <h2 className="points">{user.points} pts</h2>
-          </Card>
-        ))}
-      </List>
-      <Pagination current={3} />
+      {ranking.loading ? (
+        <Loader />
+      ) : (
+        <>
+          <Podium>
+            {podium.map(user => (
+              <Card
+                position={user.position}
+                key={user.id}
+                podium
+                onClick={() => goToUserDetails(user.id)}
+              >
+                <ProfilePicture
+                  src={user.avatar}
+                  size={imageSize(user.position)}
+                />
+                <h2 className="name">{user.name}</h2>
+                <h2 className="points">{user.points} pts</h2>
+              </Card>
+            ))}
+          </Podium>
+          <Divider />
+          <List>
+            {list.map(user => (
+              <Card
+                position={user.position}
+                key={user.id}
+                onClick={() => goToUserDetails(user.id)}
+              >
+                <h2 className="position">{user.position}</h2>
+                <ProfilePicture
+                  src={user.avatar}
+                  size={imageSize(user.position)}
+                />
+                <div
+                  style={{
+                    flex: 'auto',
+                    textAlign: 'left',
+                    zIndex: 1,
+                  }}
+                >
+                  <h2 className="name">{user.name}</h2>
+                </div>
+                <h2 className="points">{user.points} pts</h2>
+              </Card>
+            ))}
+          </List>
+          <Pagination current={3} />
+        </>
+      )}
     </Container>
   );
 };
