@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
-interface Props {
+interface ContainerProps {
   half?: boolean;
   select?: boolean;
 }
 
-export const Container = styled.div<Props>`
+export const Container = styled.div<ContainerProps>`
   padding: ${props => (!props.select ? '10px 25px;' : '0')};
   border: ${props => (!props.select ? '1px solid #000' : 'none')};
   border-radius: 5px;
@@ -45,13 +45,18 @@ export const Container = styled.div<Props>`
   }
 `;
 
-export const ErrorMessage = styled.span`
-  color: red;
-  font-size: 0.75rem;
-  text-align: left;
-  width: 100%;
-  min-height: 26px;
-  left: 15px;
-  top: -6px;
-  position: relative;
-`;
+interface ErrorMessageProps {
+  half?: boolean;
+}
+
+export const ErrorMessage = styled.span<ErrorMessageProps>`
+         color: red;
+         font-size: 0.75rem;
+         text-align: left;
+         width: 100%;
+         min-height: 26px;
+         left: 15px;
+         top: -6px;
+         position: relative;
+         max-width: ${props => (props.half ? '275px' : '570px')};
+       `;

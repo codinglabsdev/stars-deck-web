@@ -13,7 +13,7 @@ const TopBar = () => {
         <Button variant="text" onClick={() => history.push('/register')}>
           Register
         </Button>
-        <Button>Sign In</Button>
+        <Button onClick={() => history.push('/login')}>Sign In</Button>
       </div>
     </Container>
   );

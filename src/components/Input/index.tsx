@@ -81,7 +81,7 @@ const Input: React.FC<Props> = ({
           <span className={value ? 'active' : ''}>{label}</span>
         )}
       </Container>
-      <ErrorMessage>{error}</ErrorMessage>
+      <ErrorMessage half={half}>{error}</ErrorMessage>
     </Grid>
   );
 };
