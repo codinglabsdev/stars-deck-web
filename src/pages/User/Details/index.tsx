@@ -2,12 +2,18 @@ import React, { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { RouteComponentProps } from 'react-router-dom';
-import { IoIosArrowRoundBack } from 'react-icons/io';
-import { History } from 'history';
-import { Paper, UserInfo, Header, AlignCenter, Timeline } from '~/components';
+import {
+  Paper,
+  UserInfo,
+  Header,
+  AlignCenter,
+  Timeline,
+  GoBackButton,
+  NewButton,
+} from '~/components';
 import ApplicationState from '~/store/ducks/ApplicationState';
 
-import { Container, Button } from './styles';
+import { Container } from './styles';
 
 import * as UserDetailsActions from '~/store/ducks/UserDetails/actions';
 
@@ -15,11 +21,9 @@ interface MatchProps {
   id: string;
 }
 
-interface Props extends RouteComponentProps<MatchProps> {
-  history: History;
-}
+interface Props extends RouteComponentProps<MatchProps> {}
 
-const UserDetails: React.FC<Props> = ({ match, history }) => {
+const UserDetails: React.FC<Props> = ({ match }) => {
   const dispatch = useDispatch();
   const userDetails = useSelector(
     (state: ApplicationState) => state.userDetails
@@ -29,16 +33,14 @@ const UserDetails: React.FC<Props> = ({ match, history }) => {
     dispatch(UserDetailsActions.loadRequest(match.params.id));
   }, []);
 
-  const goBack = () => history.push('/');
-
   return (
     <Container>
       <Header />
       <Paper>
-        <Button onClick={goBack}>
-          <IoIosArrowRoundBack size={28} />
-          Go Back
-        </Button>
+        <div className="buttons">
+          <GoBackButton path="/" />
+          <NewButton path={`/user/${match.params.id}/new`}>Add Event</NewButton>
+        </div>
         <AlignCenter>
           <UserInfo user={userDetails.data} loading={userDetails.loading} />
           {!userDetails.loading && userDetails.data && (

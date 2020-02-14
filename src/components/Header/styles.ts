@@ -1,12 +1,16 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-export const Container = styled.div`
-  min-height: 450px;
+interface Props {
+  slim?: boolean;
+}
+
+export const Container = styled.div<Props>`
+  min-height: ${props => (props.slim ? '200px' : '450px')};
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 100px 0 150px 0;
+  padding: ${props => (props.slim ? '25px 0 150px 0' : '100px 0 150px 0')};
   align-items: center;
   background: linear-gradient(
     107.93deg,
@@ -19,9 +23,12 @@ export const Container = styled.div`
     font-family: Montserrat;
     font-style: normal;
     font-weight: normal;
-    font-size: 1rem;
+    font-size: ${props => (props.slim ? '1.5rem' : '1rem')};
     line-height: 1.25rem;
-    text-align: center;
+    text-align: ${props => (props.slim ? 'left' : 'center')};
     letter-spacing: 0.05rem;
+    width: 100%;
+    max-width: 1170px;
+    padding-top: ${props => (props.slim ? '50px' : 'none')};
   }
 `;

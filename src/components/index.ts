@@ -12,3 +12,7 @@ export { default as UserInfo } from './UserInfo';
 export { default as Loader } from './Loader';
 export { default as AlignCenter } from './AlignCenter';
 export { default as Timeline } from './Timeline';
+export { default as GoBackButton } from './GoBackButton';
+export { default as NewButton } from './NewButton';
+export { default as Input } from './Input';
+export { default as Grid } from './Grid';

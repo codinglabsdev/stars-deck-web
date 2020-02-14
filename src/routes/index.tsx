@@ -3,7 +3,7 @@ import { Switch } from 'react-router-dom';
 
 import Route from '~/components/Route';
 
-import { Home, UserDetails } from '~/pages';
+import { Home, UserDetails, NewEvent } from '~/pages';
 
 export default function Routes() {
   return (
@@ -14,6 +14,7 @@ export default function Routes() {
         component={UserDetails}
         isPrivate={false}
       />
+      <Route path="/user/:id/new" component={NewEvent} isPrivate={false} />
     </Switch>
   );
 }

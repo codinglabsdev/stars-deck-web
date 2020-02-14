@@ -2,8 +2,12 @@ import React from 'react';
 
 import { Container } from './styles';
 
-const AlignCenter: React.FC = ({ children }) => (
-  <Container>{children}</Container>
+interface Props {
+  fullWidth?: boolean;
+}
+
+const AlignCenter: React.FC<Props> = ({ children, fullWidth }) => (
+  <Container fullWidth={fullWidth}>{children}</Container>
 );
 
 export default AlignCenter;

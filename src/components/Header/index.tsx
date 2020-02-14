@@ -2,6 +2,12 @@ import React from 'react';
 
 import { Container } from './styles';
 
-const Header: React.FC = ({ children }) => <Container>{children}</Container>;
+interface Props {
+  slim?: boolean;
+}
+
+const Header: React.FC<Props> = ({ children, slim }) => (
+  <Container slim={slim}>{children}</Container>
+);
 
 export default Header;
