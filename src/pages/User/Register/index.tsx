@@ -35,10 +35,10 @@ const UserRegistrationSchema = yup.object().shape({
 });
 
 interface Props {
-  history: History
+  history: History;
 }
 
-const NewEvent: React.FC<Props> = ({history}) => {
+const NewEvent: React.FC<Props> = ({ history }) => {
   const dispatch = useDispatch();
   const methods = useForm<UserRegistrationData>({
     validationSchema: UserRegistrationSchema,
@@ -48,7 +48,9 @@ const NewEvent: React.FC<Props> = ({history}) => {
 
   const { handleSubmit, errors } = methods;
 
-  const UserRegistration = useSelector((state: ApplicationState) => state.userRegistration);
+  const UserRegistration = useSelector(
+    (state: ApplicationState) => state.userRegistration
+  );
 
   const submit = (data: UserRegistrationData) => {
     setSubmitted(true);
@@ -99,14 +101,14 @@ const NewEvent: React.FC<Props> = ({history}) => {
                 </Grid>
                 <Grid width="570px" justifyContent="space-between">
                   <Input
-                    type="text"
+                    type="password"
                     name="password"
                     label="Password"
                     error={errors.password?.message}
                     half
                   />
                   <Input
-                    type="text"
+                    type="password"
                     name="password_confirmation"
                     label="Password Confirmation"
                     error={errors.password_confirmation?.message}

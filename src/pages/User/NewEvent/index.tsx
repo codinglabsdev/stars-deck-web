@@ -4,6 +4,7 @@ import { useForm, FormContext } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { RouteComponentProps } from 'react-router-dom';
 import { IoMdCheckmarkCircleOutline } from 'react-icons/io';
+import moment from 'moment';
 
 import * as yup from 'yup';
 import { History } from 'history';
@@ -26,7 +27,16 @@ import ApplicationState from '~/store/ducks/ApplicationState';
 const NewEventSchema = yup.object().shape({
   title: yup.string().required('Please, enter the event name'),
   type: yup.string().required('Please, select an event type'),
-  date: yup.string().required('Please, type the event date'),
+  date: yup
+    .date()
+    .required('Please, type the event date')
+    .typeError('Invalid date')
+    .min(new Date('2010-01-01'), 'Date must be after 2010')
+    .max(new Date(), 'Date must be before today')
+    .transform((_value, originalValue) => {
+      const parsed = moment(originalValue, 'DD/MM/YYYY').toDate();
+      return moment(parsed).isValid() ? parsed : new Date('');
+    }),
   location: yup.string().required('Please, type the event location'),
   url: yup.string().url('Type a valid URL'),
   description: yup.string(),
@@ -37,7 +47,7 @@ interface MatchProps {
 }
 
 interface Props extends RouteComponentProps<MatchProps> {
-  history: History
+  history: History;
 }
 
 const NewEvent: React.FC<Props> = ({ match, history }) => {
@@ -80,7 +90,11 @@ const NewEvent: React.FC<Props> = ({ match, history }) => {
             <Button onClick={() => setSubmitted(false)}>
               Create New Event
             </Button>
-            <Button secondary variant="text" onClick={() => history.push(`/user/${match.params.user}/details`)}>
+            <Button
+              secondary
+              variant="text"
+              onClick={() => history.push(`/user/${match.params.user}/details`)}
+            >
               See My Timeline
             </Button>
           </Grid>
@@ -110,7 +124,7 @@ const NewEvent: React.FC<Props> = ({ match, history }) => {
                 </Grid>
                 <Grid width="570px" justifyContent="space-between">
                   <Input
-                    type="text"
+                    type="date"
                     name="date"
                     label="Date"
                     error={errors.date?.message}

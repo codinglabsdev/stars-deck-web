@@ -67,7 +67,7 @@ const NewEvent: React.FC = () => {
                     error={errors.username?.message}
                   />
                   <Input
-                    type="text"
+                    type="password"
                     name="password"
                     label="Password"
                     error={errors.password?.message}

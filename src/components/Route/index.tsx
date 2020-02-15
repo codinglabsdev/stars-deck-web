@@ -1,10 +1,12 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
-import { Route, Redirect } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import DefaultLayout from '~/layouts/default';
 import ApplicationState from '~/store/ducks/ApplicationState';
+
+import { Login } from '~/pages';
 
 interface Props {
   component: React.FC<any>;
@@ -26,7 +28,7 @@ const RouteWrapper: React.FC<Props> = ({
   const signed = signedIn;
 
   if (!signed && isPrivate) {
-    return <Redirect to="/login" />;
+    return <Route path="/" component={Login} />;
   }
 
   return (

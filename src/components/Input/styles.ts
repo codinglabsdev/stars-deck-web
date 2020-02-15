@@ -36,7 +36,15 @@ export const Container = styled.div<ContainerProps>`
     width: 100%;
     font-size: 0.85rem;
 
+    &::placeholder {
+      opacity: 0;
+      transition: all 0.25s ease-in-out;
+    }
+
     &:focus {
+      &::placeholder {
+        opacity: 1;
+      }
       & + span {
         top: 0;
         transform: translate(-10px, -50%) scale(0.95);

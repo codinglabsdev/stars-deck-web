@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import Select from 'react-select';
+import InputMask from 'react-input-mask';
 import { Container, ErrorMessage } from './styles';
 import Grid from '../Grid';
 
@@ -10,7 +11,7 @@ interface Options {
 }
 
 interface Props {
-  type: 'text' | 'select';
+  type: 'text' | 'select' | 'password' | 'date';
   name: string;
   placeholder?: string;
   label: string;
@@ -56,31 +57,46 @@ const Input: React.FC<Props> = ({
 
   return (
     <Grid fullWidth direction="column">
-      <Container half={half} onClick={focusInput} select={type === 'select'}>
-        {type === 'text' && (
-          <input
-            type={type}
+      {type !== 'date' && (
+        <Container half={half} onClick={focusInput} select={type === 'select'}>
+          {['text', 'password'].includes(type) && (
+            <input
+              type={type}
+              name={name}
+              placeholder={placeholder}
+              ref={ref => {
+                register(ref);
+                setInputRef(ref);
+              }}
+            />
+          )}
+          {type === 'select' && (
+            <Select
+              options={options}
+              styles={customStyles}
+              name={name}
+              onChange={handleSelectChange}
+              placeholder={label}
+            />
+          )}
+          {type !== 'select' && (
+            <span className={value ? 'active' : ''}>{label}</span>
+          )}
+        </Container>
+      )}
+      {type === 'date' && (
+        <Container half={half}>
+          <InputMask
+            mask="99/99/9999"
             name={name}
-            placeholder={placeholder}
-            ref={ref => {
-              register(ref);
-              setInputRef(ref);
-            }}
+            inputRef={() => register({ name })}
+            onChange={e => setValue(name, e.currentTarget.value)}
+            maskChar={null}
+            placeholder="dd/mm/yyyy"
           />
-        )}
-        {type === 'select' && (
-          <Select
-            options={options}
-            styles={customStyles}
-            name={name}
-            onChange={handleSelectChange}
-            placeholder={label}
-          />
-        )}
-        {type !== 'select' && (
           <span className={value ? 'active' : ''}>{label}</span>
-        )}
-      </Container>
+        </Container>
+      )}
       <ErrorMessage half={half}>{error}</ErrorMessage>
     </Grid>
   );
