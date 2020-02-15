@@ -41,18 +41,19 @@ const RankingList: React.FC<Props> = ({ history }) => {
     history.push(`user/${id}/details`);
   };
 
-  const renderPodiumPosition = (user: RankingData, position: number) => (
-    <Card
-      position={position}
-      key={user.id}
-      podium
-      onClick={() => goToUserDetails(user.username)}
-    >
-      <ProfilePicture src={user.avatar} size={imageSize(user.position)} />
-      <h2 className="name">{user.name}</h2>
-      <h2 className="points">{user.points} pts</h2>
-    </Card>
-  );
+  const renderPodiumPosition = (user: RankingData, position: number) =>
+    user && (
+      <Card
+        position={position}
+        key={user.id}
+        podium
+        onClick={() => goToUserDetails(user.username)}
+      >
+        <ProfilePicture src={user.avatar} size={imageSize(user.position)} />
+        <h2 className="name">{user.name}</h2>
+        <h2 className="points">{user.points} pts</h2>
+      </Card>
+    );
 
   return (
     <Container>
