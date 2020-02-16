@@ -45,51 +45,82 @@ interface EventProps {
 }
 
 export const Event = styled.div<EventProps>`
-  padding: 10px 40px;
-  margin: 30px 0;
-  position: relative;
-  background-color: inherit;
-  width: 50%;
+         padding: 10px 40px;
+         margin: 30px 0;
+         position: relative;
+         background-color: inherit;
+         width: 50%;
 
-  &::after {
-    content: ${props => `"${props.points.toString()}"`};
-    font-size: 0.9rem;
-    font-weight: 700;
-    text-align: center;
-    position: absolute;
-    width: 16px;
-    height: 16px;
-    right: -8px;
-    color: #009fff;
-    top: 25px;
-    border-radius: 50%;
-    z-index: 1;
-  }
-  &::before {
-    content: '';
-    position: absolute;
-    width: 32px;
-    height: 32px;
-    right: -19px;
-    background: #fff;
-    border: 3px solid #009fff;
-    top: 14px;
-    border-radius: 50%;
-    z-index: 1;
-  }
-  &.left {
-    left: 0;
-  }
-  &.right {
-    left: 50%;
-    &::after {
-      left: -8px;
-    }
-    &::before {
-      left: -19px;
-    }
-  }
-`;
+         @media screen and (max-width: 576px) {
+          padding: 10px;
+         }
+         @media screen and (max-width: 992px) {
+           transform: translateX(-50%);
+           z-index: 1;
+           margin-bottom: 100px;
+           width: 100%;
+         }
+
+         &::after {
+           content: ${props => `"${props.points.toString()}"`};
+           font-size: 0.9rem;
+           font-weight: 700;
+           text-align: center;
+           position: absolute;
+           width: 16px;
+           height: 16px;
+           right: -8px;
+           color: #009fff;
+           top: 25px;
+           border-radius: 50%;
+           z-index: 1;
+           @media screen and (max-width: 992px) {
+             top: -25px;
+             left: 50%;
+             transform: translateX(-50%);
+           }
+         }
+         &::before {
+           content: '';
+           position: absolute;
+           width: 32px;
+           height: 32px;
+           right: -19px;
+           background: #fff;
+           border: 3px solid #009fff;
+           top: 14px;
+           border-radius: 50%;
+           z-index: 1;
+           @media screen and (max-width: 992px) {
+             top: -35px;
+             left: 50%;
+             transform: translateX(-50%);
+           }
+         }
+         &.left {
+           left: 0;
+           @media screen and (max-width: 992px) {
+             left: 50%;
+           }
+         }
+         &.right {
+           left: 50%;
+           &::after {
+             left: -8px;
+             @media screen and (max-width: 992px) {
+               left: 50%;
+               transform: translateX(-50%);
+             }
+           }
+           &::before {
+             left: -19px;
+             @media screen and (max-width: 992px) {
+               left: 50%;
+               transform: translateX(-50%);
+             }
+           }
+         }
+       `;
 
 interface ContentProps {
   link?: boolean;

@@ -41,13 +41,13 @@ const UserDetails: React.FC<Props> = ({ match }) => {
 
   return (
     <Container>
-      <Header />
+      <Header middleSize/>
       <Paper>
-        <div className="buttons">
+        <div className="buttons mobile">
           <GoBackButton path="/" />
           {signedIn && match.params.id === username && (
             <NewButton path={`/user/${match.params.id}/new`}>
-              Add Event
+              <span>Add Event</span>
             </NewButton>
           )}
         </div>

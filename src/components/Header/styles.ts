@@ -1,7 +1,8 @@
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 
 interface Props {
   slim?: boolean;
+  middleSize?: boolean;
 }
 
 export const Container = styled.div<Props>`
@@ -42,6 +43,10 @@ export const Container = styled.div<Props>`
     padding: ${props => (props.slim ? '25px 0' : '0')};
     min-height: ${props => (props.slim ? '200px' : '100vh')};
     justify-content: center;
+
+    ${props => props.middleSize && css`
+      min-height: 350px;
+    `}
 
     button.mobile {
       display: block;

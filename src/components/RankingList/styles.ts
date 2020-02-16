@@ -35,6 +35,10 @@ export const Divider = styled.div`
   margin-top: 75px;
   margin-bottom: 50px;
   max-width: 970px;
+
+  @media screen and (max-width: 576px) {
+    display: none;
+  }
 `;
 
 export const List = styled.div`

@@ -163,6 +163,10 @@ export const Container = styled.div<ContainerProps>`
 
     @media screen and (max-width: 576px) {
     width: 100%;
+    &:first-of-type{
+      margin-top: 50px;
+      border-top: 1px solid #c2c2c2;
+    }
   }
 
   @media screen and (max-width: 992px) {
