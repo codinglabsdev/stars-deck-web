@@ -5,6 +5,7 @@ import userDetails from './UserDetails';
 import newEvent from './NewEvent';
 import userRegistration from './UserRegistration';
 import userSignIn from './UserSignIn';
+import notification from './Notification';
 
 export default combineReducers({
   ranking,
@@ -12,4 +13,5 @@ export default combineReducers({
   newEvent,
   userSignIn,
   userRegistration,
+  notification,
 });

@@ -5,12 +5,17 @@ import { UserDetailsType } from './UserDetails/types';
 import { NewEventType } from './NewEvent/types';
 import { UserRegistrationType } from './UserRegistration/types';
 import { UserSignInType } from './UserSignIn/types';
+import { NotificationType } from './Notification/types';
 
 import { load as RankingLoad } from './Ranking/sagas';
 import { load as UserDetailsLoad } from './UserDetails/sagas';
 import { send as NewEventSend } from './NewEvent/sagas';
 import { send as UserRegistrationSend } from './UserRegistration/sagas';
 import { send as UserSignInSend } from './UserSignIn/sagas';
+import {
+  notify as NotificationAdd,
+  notifyFromError as NotificationFromError,
+} from './Notification/sagas';
 
 export default function* rootSaga() {
   return yield all([
@@ -19,5 +24,7 @@ export default function* rootSaga() {
     takeLatest(NewEventType.SEND_REQUEST, NewEventSend),
     takeLatest(UserRegistrationType.SEND_REQUEST, UserRegistrationSend),
     takeLatest(UserSignInType.SEND_REQUEST, UserSignInSend),
+    takeLatest(NotificationType.ADD_NOTIFICATION, NotificationAdd),
+    takeLatest(NotificationType.REQUEST_ERROR, NotificationFromError),
   ]);
 }

@@ -1,8 +1,27 @@
-import styled from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
+
+const shake = keyframes`
+    8%, 41% {
+        transform: translateX(-7px);
+    }
+    25%, 58% {
+        transform: translateX(7px);
+    }
+    75% {
+        transform: translateX(-4px);
+    }
+    92% {
+        transform: translateX(4px);
+    }
+    0%, 100% {
+        transform: translateX(0);
+    }
+`;
 
 interface ContainerProps {
   half?: boolean;
   select?: boolean;
+  error?: boolean;
 }
 
 export const Container = styled.div<ContainerProps>`
@@ -15,6 +34,16 @@ export const Container = styled.div<ContainerProps>`
   max-width: ${props => (props.half ? '275px' : '570px')};
   margin: 10px 0;
   width: 100%;
+
+  ${props =>
+    props.error &&
+    css`
+      border-color: red;
+      animation: ${shake} 0.4s linear;
+      span {
+        color: red;
+      }
+    `}
 
   span {
     position: absolute;
@@ -58,13 +87,13 @@ interface ErrorMessageProps {
 }
 
 export const ErrorMessage = styled.span<ErrorMessageProps>`
-         color: red;
-         font-size: 0.75rem;
-         text-align: left;
-         width: 100%;
-         min-height: 26px;
-         left: 15px;
-         top: -6px;
-         position: relative;
-         max-width: ${props => (props.half ? '275px' : '570px')};
-       `;
+  color: red;
+  font-size: 0.75rem;
+  text-align: left;
+  width: 100%;
+  min-height: 26px;
+  left: 15px;
+  top: -6px;
+  position: relative;
+  max-width: ${props => (props.half ? '275px' : '570px')};
+`;

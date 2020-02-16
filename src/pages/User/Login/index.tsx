@@ -1,6 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useState } from 'react';
-import { Redirect } from 'react-router-dom';
 import { useForm, FormContext } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import * as yup from 'yup';
@@ -51,7 +50,8 @@ const NewEvent: React.FC = () => {
       <Paper>
         <GoBackButton path="/" />
         {submitted && !UserSignIn.sending && !UserSignIn.error ? (
-          <Redirect to="/" />
+          // <Redirect to="/" />
+          <div>{UserSignIn.error}</div>
         ) : (
           <FormContext {...methods}>
             <form

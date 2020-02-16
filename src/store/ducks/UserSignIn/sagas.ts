@@ -4,6 +4,7 @@ import api, { addToken } from '~/services/api';
 
 import { sendSuccess, sendFailure } from './actions';
 import { UserSignInType, UserSignInData } from './types';
+import * as NotificationActions from '~/store/ducks/Notification/actions';
 
 export function* send({
   payload,
@@ -18,8 +19,26 @@ export function* send({
     localStorage.setItem('@stars-deck-token', token);
     localStorage.setItem('@stars-deck-username', username);
     addToken(token);
-    yield put(sendSuccess(username));
+    return yield put(sendSuccess(username));
   } catch (error) {
+    if (error.response?.data)
+      return yield put(
+        NotificationActions.notifyFromError(error.response.data)
+      );
+    if (error.response?.status === 401) {
+      yield put(
+        NotificationActions.addNotification({
+          type: 'error',
+          message: 'Usuário ou senha inválidos',
+        })
+      );
+    }
+    yield put(
+      NotificationActions.addNotification({
+        type: 'error',
+        message: 'Network error',
+      })
+    );
     yield put(sendFailure());
   }
 }

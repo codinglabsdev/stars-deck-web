@@ -58,7 +58,7 @@ const Input: React.FC<Props> = ({
   return (
     <Grid fullWidth direction="column">
       {type !== 'date' && (
-        <Container half={half} onClick={focusInput} select={type === 'select'}>
+        <Container error={!!error} half={half} onClick={focusInput} select={type === 'select'}>
           {['text', 'password'].includes(type) && (
             <input
               type={type}
@@ -85,7 +85,7 @@ const Input: React.FC<Props> = ({
         </Container>
       )}
       {type === 'date' && (
-        <Container half={half}>
+        <Container error={!!error} half={half}>
           <InputMask
             mask="99/99/9999"
             name={name}

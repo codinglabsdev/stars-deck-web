@@ -26,7 +26,7 @@ const UserRegistrationSchema = yup.object().shape({
   email: yup
     .string()
     .email('Please, type a valid e-mail')
-    .required('Please, select an event type'),
+    .required('Please, enter your e-mail'),
   password: yup.string().required('Please, type a password'),
   password_confirmation: yup
     .string()
