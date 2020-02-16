@@ -28,7 +28,7 @@ const SearchBar = () => {
       <button type="button" onClick={openSearchBar}>
         <IoIosSearch size={24} />
       </button>
-      <form name="search-user">
+      <form name="search-user" autoComplete="off" noValidate>
         <input
           type="text"
           placeholder="Search User"

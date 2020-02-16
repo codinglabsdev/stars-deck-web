@@ -78,7 +78,12 @@ const NewEvent: React.FC<Props> = ({ history }) => {
           </Grid>
         ) : (
           <FormContext {...methods}>
-            <form name="new-event" onSubmit={handleSubmit(submit)}>
+            <form
+              name="user-registration"
+              onSubmit={handleSubmit(submit)}
+              autoComplete="off"
+              noValidate
+            >
               {UserRegistration.sending && (
                 <Loader fullScreen background="rgba(255,255,255,0.8)" />
               )}
@@ -117,10 +122,7 @@ const NewEvent: React.FC<Props> = ({ history }) => {
                 </Grid>
               </AlignCenter>
               <Grid justifyContent="flex-end">
-                <Button
-                  variant="text"
-                  onClick={() => history.push('/login')}
-                >
+                <Button variant="text" onClick={() => history.push('/login')}>
                   Sign In
                 </Button>
                 <Button type="submit">Create Account</Button>

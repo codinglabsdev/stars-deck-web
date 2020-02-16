@@ -54,7 +54,12 @@ const NewEvent: React.FC = () => {
           <Redirect to="/" />
         ) : (
           <FormContext {...methods}>
-            <form name="new-event" onSubmit={handleSubmit(submit)}>
+            <form
+              name="user-login"
+              onSubmit={handleSubmit(submit)}
+              autoComplete="off"
+              noValidate
+            >
               {UserSignIn.sending && (
                 <Loader fullScreen background="rgba(255,255,255,0.8)" />
               )}

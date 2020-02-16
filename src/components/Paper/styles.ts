@@ -35,6 +35,10 @@ export const Container = styled.div`
     margin-top: 0;
     padding: 0;
     box-shadow: none;
+    background: none;
+    border-radius: 0;
+    min-height: unset;
+    height: 100%;
     & > button {
       margin: 10px 0;
     }

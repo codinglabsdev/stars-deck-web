@@ -100,7 +100,11 @@ const NewEvent: React.FC<Props> = ({ match, history }) => {
           </Grid>
         ) : (
           <FormContext {...methods}>
-            <form name="new-event" onSubmit={handleSubmit(submit)}>
+            <form
+              name="new-event"
+              onSubmit={handleSubmit(submit)}
+              autoComplete="off"
+            >
               {newEvent.sending && (
                 <Loader fullScreen background="rgba(255,255,255,0.8)" />
               )}

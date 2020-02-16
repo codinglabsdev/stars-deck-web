@@ -108,4 +108,8 @@ p {
   line-height: 1.5rem;
 }
 
+form {
+  height: 100%;
+}
+
 `;
