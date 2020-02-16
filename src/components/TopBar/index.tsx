@@ -2,7 +2,6 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 import { IoMdLogIn } from 'react-icons/io';
-import { FiUserPlus } from 'react-icons/fi';
 
 import { Container } from './styles';
 import SearchBar from '../SearchBar';
@@ -28,9 +27,6 @@ const TopBar = () => {
             <Button onClick={() => history.push('/login')}>Sign In</Button>
           </div>
           <div className="mobile">
-            <Button secondary variant="icon" onClick={() => history.push('/register')}>
-              <FiUserPlus size={24} />
-            </Button>
             <Button variant="icon" onClick={() => history.push('/login')}>
               <IoMdLogIn size={24} />
             </Button>

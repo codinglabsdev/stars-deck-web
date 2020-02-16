@@ -138,15 +138,13 @@ const NewEvent: React.FC<Props> = ({ match, history }) => {
                     half
                   />
                 </Grid>
-                <Grid width="570px">
+                <Grid width="570px" direction="column">
                   <Input
                     type="text"
                     name="url"
                     label="Webpage"
                     error={errors.url?.message}
                   />
-                </Grid>
-                <Grid width="570px">
                   <Input
                     type="text"
                     name="description"

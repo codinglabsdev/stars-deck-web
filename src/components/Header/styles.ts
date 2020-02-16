@@ -41,7 +41,7 @@ export const Container = styled.div<Props>`
 
   @media screen and (max-width: 992px) {
     padding: ${props => (props.slim ? '25px 0' : '0')};
-    min-height: ${props => (props.slim ? '200px' : '100vh')};
+    min-height: ${props => (props.slim ? 'unset' : '100vh')};
     justify-content: center;
 
     ${props => props.middleSize && css`

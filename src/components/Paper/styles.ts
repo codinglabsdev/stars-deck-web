@@ -35,5 +35,8 @@ export const Container = styled.div`
     margin-top: 0;
     padding: 0;
     box-shadow: none;
+    & > button {
+      margin: 10px 0;
+    }
   }
 `;
