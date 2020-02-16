@@ -17,4 +17,10 @@ export const Container = styled.div`
     justify-content: space-between;
     align-items: center;
   }
+
+  @media screen and (max-width: 992px) {
+    margin-top: 0;
+    padding: 0;
+    box-shadow: none;
+  }
 `;

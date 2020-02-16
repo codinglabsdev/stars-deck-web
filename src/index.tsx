@@ -6,6 +6,7 @@ import 'react-toastify/scss/main.scss';
 import 'typeface-montserrat';
 import 'typeface-fjalla-one';
 import 'typeface-lato';
+import smoothscroll from 'smoothscroll-polyfill';
 
 import '~/config/ReactotronConfig';
 import store from '~/store';
@@ -14,6 +15,8 @@ import GlobalStyle from '~/styles/global';
 
 import App from '~/App';
 import * as serviceWorker from './serviceWorker';
+
+smoothscroll.polyfill();
 
 ReactDOM.render(
   <Provider store={store}>

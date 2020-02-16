@@ -19,6 +19,11 @@ export const Container = styled.div<Props>`
     #91eae4 100%
   );
 
+  button.mobile {
+    display: none;
+    margin: 25px 0;
+  }
+
   span {
     font-family: Montserrat;
     font-style: normal;
@@ -30,5 +35,25 @@ export const Container = styled.div<Props>`
     width: 100%;
     max-width: 1170px;
     padding-top: ${props => (props.slim ? '50px' : 'none')};
+    display: block;
+  }
+
+  @media screen and (max-width: 992px) {
+    padding: ${props => (props.slim ? '25px 0' : '0')};
+    min-height: ${props => (props.slim ? '200px' : '100vh')};
+    justify-content: center;
+
+    button.mobile {
+      display: block;
+    }
+
+    h1 {
+      font-size: 3rem;
+      letter-spacing: 0.25rem;
+    }
+
+    span {
+      padding: 0 30px;
+    }
   }
 `;

@@ -1,5 +1,9 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+
+import { IoMdLogIn } from 'react-icons/io';
+import { FiUserPlus } from 'react-icons/fi';
+
 import { Container } from './styles';
 import SearchBar from '../SearchBar';
 import Button from '../Button';
@@ -16,12 +20,22 @@ const TopBar = () => {
     <Container>
       <SearchBar />
       {!signedIn ? (
-        <div className="buttons">
-          <Button variant="text" onClick={() => history.push('/register')}>
-            Register
-          </Button>
-          <Button onClick={() => history.push('/login')}>Sign In</Button>
-        </div>
+        <>
+          <div className="buttons">
+            <Button variant="text" onClick={() => history.push('/register')}>
+              Register
+            </Button>
+            <Button onClick={() => history.push('/login')}>Sign In</Button>
+          </div>
+          <div className="mobile">
+            <Button secondary variant="icon" onClick={() => history.push('/register')}>
+              <FiUserPlus size={24} />
+            </Button>
+            <Button variant="icon" onClick={() => history.push('/login')}>
+              <IoMdLogIn size={24} />
+            </Button>
+          </div>
+        </>
       ) : (
         <UserCard />
       )}

@@ -39,6 +39,7 @@ ul {
 
 button {
   cursor: pointer;
+  background: none;
 }
 
 h1 {
@@ -49,6 +50,7 @@ h1 {
   text-align: center;
   text-transform: uppercase;
   color: #FFFFFF;
+
 }
 
 h2 {
@@ -57,6 +59,7 @@ h2 {
   text-align: center;
   letter-spacing: 0.1rem;
   text-transform: uppercase;
+
 }
 
 h3 {

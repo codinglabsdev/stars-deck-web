@@ -33,9 +33,10 @@ const Timeline: React.FC<Props> = ({ data }) => (
             location,
             points,
             url,
+            id
           } = event;
           return (
-            <Event points={points} className={position}>
+            <Event points={points} className={position} key={id}>
               <a href={url}>
                 <Content link={!!url}>
                   <div className="topbar">
