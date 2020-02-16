@@ -21,6 +21,11 @@ export const Container = styled.div<ContainerProps>`
   margin-top: -200px;
   z-index: 1;
 
+  @media screen and (max-width: 992px){
+    border-radius: 0;
+    width: 100%;
+  }
+
   h2, img, span, a {
     z-index: 1;
   }
@@ -78,6 +83,10 @@ export const Container = styled.div<ContainerProps>`
         ? 'linear-gradient(111.05deg, #3494E6 0%, #EC6EAD 138.8%)'
         : '#fff'};
     border-radius: 10px;
+
+    @media screen and (max-width: 992px){
+      border-radius: 0;
+    }
   }
 
 

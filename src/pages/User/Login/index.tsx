@@ -16,6 +16,7 @@ import {
   Button,
   Loader,
 } from '~/components';
+import history from '~/services/history';
 
 import * as UserSignInActions from '~/store/ducks/UserSignIn/actions';
 import ApplicationState from '~/store/ducks/ApplicationState';
@@ -53,12 +54,21 @@ const NewEvent: React.FC = () => {
           <Redirect to="/" />
         ) : (
           <FormContext {...methods}>
-            <form name="new-event" onSubmit={handleSubmit(submit)}>
+            <form
+              name="user-login"
+              onSubmit={handleSubmit(submit)}
+              autoComplete="off"
+              noValidate
+            >
               {UserSignIn.sending && (
                 <Loader fullScreen background="rgba(255,255,255,0.8)" />
               )}
               <AlignCenter fullWidth>
-                <Grid width="570px" justifyContent="space-between" direction="column">
+                <Grid
+                  width="570px"
+                  justifyContent="space-between"
+                  direction="column"
+                >
                   <Input
                     type="text"
                     name="username"
@@ -76,6 +86,12 @@ const NewEvent: React.FC = () => {
                 </Grid>
               </AlignCenter>
               <Grid justifyContent="flex-end">
+                <Button
+                  variant="text"
+                  onClick={() => history.push('/register')}
+                >
+                  Register
+                </Button>
                 <Button type="submit">Sign In</Button>
               </Grid>
             </form>

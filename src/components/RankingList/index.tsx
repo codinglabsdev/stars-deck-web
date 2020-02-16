@@ -8,11 +8,9 @@ import { Container, Podium, Divider, List } from './styles';
 
 import Card from '../Card';
 import ProfilePicture from '../ProfilePicture';
-import Pagination from '../Pagination';
 import Loader from '../Loader';
 
 import ApplicationState from '~/store/ducks/ApplicationState';
-import { RankingData } from '~/store/ducks/Ranking/types';
 
 interface Props {
   history: History;
@@ -33,27 +31,13 @@ const RankingList: React.FC<Props> = ({ history }) => {
     return 75;
   };
 
-  const podium = ranking.data.slice(0, 3);
+  const podium = ranking.data.filter(({ position }) => position <= 3);
 
-  const list = ranking.data.slice(3);
+  const list = ranking.data.filter(({ position }) => position > 3);
 
   const goToUserDetails = (id: string) => {
     history.push(`user/${id}/details`);
   };
-
-  const renderPodiumPosition = (user: RankingData, position: number) =>
-    user && (
-      <Card
-        position={position}
-        key={user.id}
-        podium
-        onClick={() => goToUserDetails(user.username)}
-      >
-        <ProfilePicture src={user.avatar} size={imageSize(user.position)} />
-        <h2 className="name">{user.name}</h2>
-        <h2 className="points">{user.points} pts</h2>
-      </Card>
-    );
 
   return (
     <Container>
@@ -64,9 +48,23 @@ const RankingList: React.FC<Props> = ({ history }) => {
           {podium.length && (
             <>
               <Podium>
-                {renderPodiumPosition(podium[1], 2)}
-                {renderPodiumPosition(podium[0], 1)}
-                {renderPodiumPosition(podium[2], 3)}
+                {podium.map(user => {
+                  return (
+                    <Card
+                      position={user.position}
+                      key={user.id}
+                      podium
+                      onClick={() => goToUserDetails(user.username)}
+                    >
+                      <ProfilePicture
+                        src={user.avatar}
+                        size={imageSize(user.position)}
+                      />
+                      <h2 className="name">{user.name}</h2>
+                      <h2 className="points">{user.points} pts</h2>
+                    </Card>
+                  );
+                })}
               </Podium>
 
               <Divider />
@@ -90,11 +88,13 @@ const RankingList: React.FC<Props> = ({ history }) => {
                 >
                   <h2 className="name">{user.name}</h2>
                 </div>
-                <h2 className="points">{user.points} pts</h2>
+                <h2 className="points">
+                  {user.points}
+                  <span>pts</span>
+                </h2>
               </Card>
             ))}
           </List>
-          <Pagination current={3} />
         </>
       )}
     </Container>

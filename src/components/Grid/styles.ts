@@ -20,4 +20,13 @@ export const Container = styled.div<Props>`
   flex-direction: ${props => props.direction || 'row'};
   justify-content: ${props => props.justifyContent || 'center'};
   align-items: ${props => props.alignItems || 'center'};
+
+  @media screen and (max-width: 992px) {
+    max-width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    & > div {
+      max-width: calc(100% - 20px);
+    }
+  }
 `;

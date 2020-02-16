@@ -1,8 +1,8 @@
 import styled, { css } from 'styled-components';
-import { darken } from 'polished';
+import { darken, lighten } from 'polished';
 
 interface Props {
-  variant?: 'text' | 'outlined';
+  variant?: 'text' | 'outlined' | 'icon';
   type?: 'button' | 'submit' | null;
   secondary?: boolean;
 }
@@ -16,7 +16,7 @@ export const Container = styled.button.attrs<Props>(props => ({
   font-family: Montserrat, 'sans-serif';
   font-style: normal;
   font-weight: 500;
-  font-size: ${props => props.secondary ? '0.85rem' : '1rem'};
+  font-size: ${props => (props.secondary ? '0.85rem' : '1rem')};
   text-align: center;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -51,7 +51,25 @@ export const Container = styled.button.attrs<Props>(props => ({
       }
     `}
 
-    ${props => props.secondary && css`
-      margin-top: 25px;
+  ${props =>
+    props?.variant === 'icon' &&
+    css<Props>`
+      background: none;
+      border: none;
+      box-shadow: none;
+      color: ${props =>
+        props.secondary ? lighten(0.15, '#74b9ff') : '#74b9ff'};
+      padding: 10px;
+      &:hover {
+        background: none;
+        color: ${darken(0.3, '#74b9ff')};
+      }
     `}
+
+    ${props =>
+      props.secondary &&
+      props.variant !== 'icon' &&
+      css`
+        margin-top: 25px;
+      `}
 `;

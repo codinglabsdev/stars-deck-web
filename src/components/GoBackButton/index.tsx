@@ -13,7 +13,7 @@ const GoBackButton: React.FC<Props> = ({ path }) => {
   return (
     <Container onClick={() => goBack(path)}>
       <IoIosArrowRoundBack size={28} />
-      Go Back
+      <span>Go Back</span>
     </Container>
   );
 };

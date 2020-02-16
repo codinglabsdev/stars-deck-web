@@ -100,7 +100,11 @@ const NewEvent: React.FC<Props> = ({ match, history }) => {
           </Grid>
         ) : (
           <FormContext {...methods}>
-            <form name="new-event" onSubmit={handleSubmit(submit)}>
+            <form
+              name="new-event"
+              onSubmit={handleSubmit(submit)}
+              autoComplete="off"
+            >
               {newEvent.sending && (
                 <Loader fullScreen background="rgba(255,255,255,0.8)" />
               )}
@@ -138,15 +142,13 @@ const NewEvent: React.FC<Props> = ({ match, history }) => {
                     half
                   />
                 </Grid>
-                <Grid width="570px">
+                <Grid width="570px" direction="column">
                   <Input
                     type="text"
                     name="url"
                     label="Webpage"
                     error={errors.url?.message}
                   />
-                </Grid>
-                <Grid width="570px">
                   <Input
                     type="text"
                     name="description"

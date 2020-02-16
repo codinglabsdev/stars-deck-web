@@ -1,17 +1,51 @@
-import React, { useRef } from 'react';
-import { IoIosSearch } from 'react-icons/io';
+import React, { useState, useRef } from 'react';
+import { IoIosSearch, IoIosClose } from 'react-icons/io';
 
 import { Container } from './styles';
 
 const SearchBar = () => {
+  const [open, setOpen] = useState(false);
+  const [focus, setFocus] = useState(false);
   const searchInput = useRef<HTMLInputElement>(null);
-  const focusSearch = () => searchInput.current?.focus();
+
+  const openSearchBar = () => {
+    if (!open) {
+      setOpen(true);
+      setTimeout(() => {
+        searchInput.current?.focus();
+      }, 500);
+    } else {
+      searchInput.current?.focus();
+    }
+  };
+
+  const closeSearchBar = () => {
+    return setOpen(false);
+  };
+
   return (
-    <Container onClick={focusSearch}>
-      <IoIosSearch size={24} />
-      <form name="search-user">
-        <input type="text" placeholder="Search User" ref={searchInput} />
+    <Container open={open} focus={focus}>
+      <button type="button" onClick={openSearchBar}>
+        <IoIosSearch size={24} />
+      </button>
+      <form name="search-user" autoComplete="off" noValidate>
+        <input
+          type="text"
+          placeholder="Search User"
+          ref={searchInput}
+          onFocus={() => setFocus(true)}
+          onBlur={() => setFocus(false)}
+          disabled={!open}
+        />
       </form>
+      <button
+        type="button"
+        onClick={closeSearchBar}
+        className="close"
+        disabled={!open}
+      >
+        <IoIosClose size={24} />
+      </button>
     </Container>
   );
 };

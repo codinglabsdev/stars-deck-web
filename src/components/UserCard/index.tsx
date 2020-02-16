@@ -20,12 +20,14 @@ const UserCard = () => {
     <Container>
       {!userData.loading && userData.data && (
         <>
-          <ProfilePicture src={userData.data!.avatar} size={38} />
-          <div className="info">
-            <span>{userData.data.name}</span>
-            <span className="points">
-              #{userData.data.position} | {userData.data.points} pts
-            </span>
+          <div className="profile">
+            <ProfilePicture src={userData.data!.avatar} size={38} />
+            <div className="info">
+              <span>{userData.data.name}</span>
+              <span className="points">
+                #{userData.data.position} | {userData.data.points} pts
+              </span>
+            </div>
           </div>
           <NewButton path={`/user/${username}/new`} background />
         </>
