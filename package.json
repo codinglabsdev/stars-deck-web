@@ -50,7 +50,10 @@
     "test": "react-app-rewired test",
     "lint": "lint-staged",
     "coverage": "react-app-rewired test --coverage --watchAll=false",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "react-app-rewired build",
+    "deploy": "aws s3 sync ./build s3://starsdeck.codinglabs.dev --delete",
+    "postdeploy": "aws cloudfront create-invalidation --distribution-id EM4RIWLX43X9N --paths '/'"
   },
   "husky": {
     "hooks": {
