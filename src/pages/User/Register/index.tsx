@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import { useForm, FormContext } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { IoMdCheckmarkCircleOutline } from 'react-icons/io';
@@ -19,6 +19,7 @@ import {
 } from '~/components';
 
 import * as UserRegistrationActions from '~/store/ducks/UserRegistration/actions';
+import * as SignInActions from '~/store/ducks/UserSignIn/actions';
 import ApplicationState from '~/store/ducks/ApplicationState';
 
 const UserRegistrationSchema = yup.object().shape({
@@ -44,18 +45,22 @@ const NewEvent: React.FC<Props> = ({ history }) => {
     validationSchema: UserRegistrationSchema,
   });
 
-  const [submitted, setSubmitted] = useState(false);
-
-  const { handleSubmit, errors } = methods;
+  const { handleSubmit, getValues, errors } = methods;
 
   const UserRegistration = useSelector(
     (state: ApplicationState) => state.userRegistration
   );
 
   const submit = (data: UserRegistrationData) => {
-    setSubmitted(true);
     dispatch(UserRegistrationActions.sendRequest(data));
   };
+
+  useEffect(() => {
+    if (UserRegistration.success) {
+      const { username, password } = getValues();
+      dispatch(SignInActions.sendRequest({ username, password }));
+    }
+  }, [UserRegistration.success, dispatch, getValues]);
 
   return (
     <Container>
@@ -64,17 +69,11 @@ const NewEvent: React.FC<Props> = ({ history }) => {
       </Header>
       <Paper>
         <GoBackButton path="/" />
-        {submitted && !UserRegistration.sending && !UserRegistration.error ? (
+        {UserRegistration.success && !UserRegistration.error ? (
           <Grid direction="column">
             <IoMdCheckmarkCircleOutline size={64} color="#10ac84" />
             <span className="label">Success!</span>
-            <Button
-              secondary
-              variant="text"
-              onClick={() => history.push('/login')}
-            >
-              Sign In
-            </Button>
+            Sign In
           </Grid>
         ) : (
           <FormContext {...methods}>
@@ -94,13 +93,18 @@ const NewEvent: React.FC<Props> = ({ history }) => {
                     name="username"
                     label="Github Username"
                     half
-                    error={errors.username?.message}
+                    error={
+                      errors.username?.message ||
+                      UserRegistration.fields.username
+                    }
                   />
                   <Input
                     type="text"
                     name="email"
                     label="E-mail"
-                    error={errors.email?.message}
+                    error={
+                      errors.email?.message || UserRegistration.fields.email
+                    }
                     half
                   />
                 </Grid>
@@ -109,14 +113,20 @@ const NewEvent: React.FC<Props> = ({ history }) => {
                     type="password"
                     name="password"
                     label="Password"
-                    error={errors.password?.message}
+                    error={
+                      errors.password?.message ||
+                      UserRegistration.fields.password
+                    }
                     half
                   />
                   <Input
                     type="password"
                     name="password_confirmation"
                     label="Password Confirmation"
-                    error={errors.password_confirmation?.message}
+                    error={
+                      errors.password_confirmation?.message ||
+                      UserRegistration.fields.password
+                    }
                     half
                   />
                 </Grid>

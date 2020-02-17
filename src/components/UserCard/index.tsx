@@ -3,18 +3,29 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Container } from './styles';
 import ApplicationState from '~/store/ducks/ApplicationState';
 import * as UserDetailsActions from '~/store/ducks/UserDetails/actions';
+import * as UserSignInActions from '~/store/ducks/UserSignIn/actions';
 import NewButton from '../NewButton';
 import ProfilePicture from '../ProfilePicture';
+import { signOut } from '~/services/api';
 
 const UserCard = () => {
   const dispatch = useDispatch();
-  const [userData, username] = useSelector((state: ApplicationState) => [
+  const [userData, username, error] = useSelector((state: ApplicationState) => [
     state.userDetails,
     state.userSignIn.username,
+    state.userDetails.error,
   ]);
+
   useEffect(() => {
     dispatch(UserDetailsActions.loadRequest(username!));
   }, [dispatch, username]);
+
+  useEffect(() => {
+    if (!userData.loading && error) {
+      signOut();
+      dispatch(UserSignInActions.checkAuth());
+    }
+  }, [userData.loading, dispatch, error]);
 
   return (
     <Container>

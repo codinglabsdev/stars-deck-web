@@ -16,7 +16,7 @@ interface Props {
   placeholder?: string;
   label: string;
   half?: boolean;
-  error?: string;
+  error?: string | boolean;
   options?: Options[];
 }
 
@@ -58,7 +58,12 @@ const Input: React.FC<Props> = ({
   return (
     <Grid fullWidth direction="column">
       {type !== 'date' && (
-        <Container error={!!error} half={half} onClick={focusInput} select={type === 'select'}>
+        <Container
+          error={!!error}
+          half={half}
+          onClick={focusInput}
+          select={type === 'select'}
+        >
           {['text', 'password'].includes(type) && (
             <input
               type={type}

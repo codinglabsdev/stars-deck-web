@@ -25,7 +25,6 @@ const UserSignInSchema = yup.object().shape({
   password: yup.string().required('Please, type a password'),
 });
 
-
 const NewEvent: React.FC = () => {
   const dispatch = useDispatch();
   const methods = useForm<UserSignInData>({
@@ -74,13 +73,13 @@ const NewEvent: React.FC = () => {
                     name="username"
                     label="Github Username"
                     half
-                    error={errors.username?.message}
+                    error={errors.username?.message || UserSignIn.error}
                   />
                   <Input
                     type="password"
                     name="password"
                     label="Password"
-                    error={errors.password?.message}
+                    error={errors.username?.message || UserSignIn.error}
                     half
                   />
                 </Grid>

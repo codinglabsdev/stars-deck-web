@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import DefaultLayout from '~/layouts/default';
@@ -12,7 +12,9 @@ interface Props {
   component: React.FC<any>;
   path: string;
   exact?: boolean | undefined;
-  isPrivate: boolean | undefined;
+  isPrivate?: boolean | undefined;
+  publicOnly?: boolean | undefined;
+  redirect?: string | undefined;
 }
 
 const RouteWrapper: React.FC<Props> = ({
@@ -20,6 +22,8 @@ const RouteWrapper: React.FC<Props> = ({
   isPrivate,
   exact,
   path,
+  publicOnly,
+  redirect,
 }) => {
   const signedIn = useSelector(
     (state: ApplicationState) => state.userSignIn.signedIn
@@ -29,6 +33,10 @@ const RouteWrapper: React.FC<Props> = ({
 
   if (!signed && isPrivate) {
     return <Route path="/" component={Login} />;
+  }
+
+  if (signed && publicOnly) {
+    return <Redirect to={redirect || '/'} />;
   }
 
   return (

@@ -14,18 +14,29 @@ export function* load({
 }) {
   try {
     const response = yield call(api.get, `users/${payload}`);
-    yield put(loadSuccess(response.data));
+    return yield put(loadSuccess(response.data));
   } catch (error) {
     if (error.response?.data) {
-      yield put(NotificationActions.notifyFromError(error.response.data));
-    } else {
-      yield put(
+      yield put(loadFailure());
+      return yield put(
+        NotificationActions.notifyFromError(error.response.data)
+      );
+    }
+    if (error.response.status === 404) {
+      yield put(loadFailure());
+      return yield put(
         NotificationActions.addNotification({
           type: 'error',
-          message: 'Network error',
+          message: 'User not found',
         })
       );
     }
     yield put(loadFailure());
+    return yield put(
+      NotificationActions.addNotification({
+        type: 'error',
+        message: 'Network error',
+      })
+    );
   }
 }

@@ -21,24 +21,24 @@ export function* send({
     addToken(token);
     return yield put(sendSuccess(username));
   } catch (error) {
+    yield put(sendFailure());
     if (error.response?.data)
       return yield put(
         NotificationActions.notifyFromError(error.response.data)
       );
     if (error.response?.status === 401) {
-      yield put(
+      return yield put(
         NotificationActions.addNotification({
           type: 'error',
           message: 'Usuário ou senha inválidos',
         })
       );
     }
-    yield put(
+    return yield put(
       NotificationActions.addNotification({
         type: 'error',
         message: 'Network error',
       })
     );
-    yield put(sendFailure());
   }
 }

@@ -14,6 +14,15 @@ export function addToken(token: string) {
   });
 }
 
+export function signOut() {
+  localStorage.clear();
+  api.interceptors.request.use(configuration => {
+    const config = configuration;
+    config.headers.Authorization = undefined;
+    return config;
+  });
+}
+
 if (savedToken) addToken(savedToken);
 
 export default api;
