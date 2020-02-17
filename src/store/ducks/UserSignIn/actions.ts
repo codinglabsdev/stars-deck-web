@@ -10,3 +10,5 @@ export const sendSuccess = (data: string) =>
 export const sendFailure = () => action(UserSignInType.SEND_FAILURE);
 
 export const checkAuth = () => action(UserSignInType.CHECK_AUTH);
+
+export const terminateSession = () => action(UserSignInType.SIGN_OUT);

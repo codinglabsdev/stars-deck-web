@@ -131,11 +131,15 @@ const NewEvent: React.FC<Props> = ({ history }) => {
                   />
                 </Grid>
               </AlignCenter>
-              <Grid justifyContent="flex-end">
-                <Button variant="text" onClick={() => history.push('/login')}>
+              <Grid direction="column">
+                <Button type="submit">Create Account</Button>
+                <Button
+                  variant="text"
+                  onClick={() => history.push('/login')}
+                  secondary
+                >
                   Sign In
                 </Button>
-                <Button type="submit">Create Account</Button>
               </Grid>
             </form>
           </FormContext>

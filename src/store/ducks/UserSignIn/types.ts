@@ -7,6 +7,7 @@ export enum UserSignInType {
   CHECK_AUTH = '@userSignIn/CHECK_AUTH',
   SEND_SUCCESS = '@userSignIn/SEND_SUCCESS',
   SEND_FAILURE = '@userSignIn/SEND_FAILURE',
+  SIGN_OUT = '@userSignIn/SIGN_OUT',
 }
 
 /**

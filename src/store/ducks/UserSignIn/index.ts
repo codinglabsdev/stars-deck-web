@@ -1,6 +1,8 @@
 import { Reducer } from 'redux';
 import { UserSignInState, UserSignInType } from './types';
 
+import { signOut } from '~/services/api';
+
 const INITIAL_STATE: UserSignInState = {
   error: false,
   sending: false,
@@ -31,7 +33,16 @@ const reducer: Reducer<UserSignInState> = (state = INITIAL_STATE, action) => {
         sending: false,
         error: false,
         signedIn: !!savedToken,
-        username: savedUsername,
+        username: savedUsername || null,
+      };
+    case UserSignInType.SIGN_OUT:
+      signOut();
+      return {
+        ...state,
+        sending: false,
+        error: false,
+        signedIn: false,
+        username: null,
       };
     default:
       return state;

@@ -1,8 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-import { IoMdLogIn } from 'react-icons/io';
-
 import { Container } from './styles';
 import SearchBar from '../SearchBar';
 import Button from '../Button';
@@ -27,8 +25,8 @@ const TopBar = () => {
             <Button onClick={() => history.push('/login')}>Sign In</Button>
           </div>
           <div className="mobile">
-            <Button variant="icon" onClick={() => history.push('/login')}>
-              <IoMdLogIn size={24} />
+            <Button variant="text" onClick={() => history.push('/login')}>
+              Sign In
             </Button>
           </div>
         </>
